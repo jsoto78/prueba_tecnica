@@ -1,0 +1,62 @@
+    <div class="card text-bg-dark">
+        <div class="card-header">Countries
+        
+         <a class="grayicon float-end btnNewCountry" id="btn_new_country" 
+            data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Click here for add new country."
+
+                        data-bs-toggle="modal" data-bs-target="#new_countryModal">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+        </div>
+            <div class="card-body">
+            <div class="mb-2 w-100">
+               
+                </div>
+                 <div class="table-responsive p-0">
+                        <table id="tablaPaises" class="table table-head-fixed text-nowrap table-hover text-white">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Flag</th>
+                                    <th class="border-top-0">Name</th>
+                                    <th class="border-top-0">Full Name</th>
+                                    <th class="border-top-0">Capital City</th>
+                                    <th class="border-top-0">Region</th>
+                                    <th class="border-top-0">Sub Region</th>
+                                    <th class="border-top-0"></th>
+                                    <th class="border-top-0"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for c in countries %}
+                                        <tr>
+                                        <td class="txt-oflo">{{ c.flag }}</td>
+                                        <td class="txt-oflo">{{ c.name }}</td>
+                                        <td class="txt-oflo">{{ c.getFullName() }}</td>
+                                        <td class="txt-oflo">{{ c.getCapitalCity() }}</td>
+                                        <td class="txt-oflo">{{ c.region }}</td>
+                                        <td class="txt-oflo">{{ c.getSubRegion() }}</td>
+                                        <td class="txt-oflo justify-content-center d-flex">
+                                        <a type="button" class="grayicon"
+                                            href="/country/{{ c.Id  }}">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        </td>
+                                        <td class="txt-oflo">
+                                            <a type="button"
+                                            class="contrydelete justify-content-center" href="#" data-valor="{{ c.Id  }}">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            
+                            </tbody>
+                        </table>
+                 </div>
+
+        </div>
+    </div>
+
+

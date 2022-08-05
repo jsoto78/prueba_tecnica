@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<style>
+   body{overflow-y: auto !important;}
+</style>
+
+<div class="body-wrapper">
+
+
+<div class="container">
+    <div class="card text-bg-dark">
+        <div class="card-header">User &nbsp
+        <a href="/users" class="float-end grayicon" ><i class="fas fa-step-backward"></i></a>
+        </div>
+                <div class="card-body">
+                        {{ form(form)}}
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

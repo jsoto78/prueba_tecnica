@@ -1,0 +1,56 @@
+    <div class="card text-bg-dark">
+        <div class="card-header">Users
+        
+         <a class="grayicon float-end btnNewUser" id="btn_new_user" 
+            data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Click here for add new user."
+
+                        data-bs-toggle="modal" data-bs-target="#new_countryModal">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+        </div>
+            <div class="card-body">
+            <div class="mb-2 w-100">
+               
+                </div>
+                 <div class="table-responsive p-0">
+                        <table id="tablaUsers" class="table table-head-fixed text-nowrap table-hover text-white">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Name</th>
+                                    <th class="border-top-0">Email</th>
+                          <th class="border-top-0">Role</th>
+                                    <th class="border-top-0"></th>
+                                    <th class="border-top-0"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for u in users %}
+                                        <tr>
+                                        <td class="txt-oflo">{{ u.name }}</td>
+                                        <td class="txt-oflo">{{ u.email }}</td>
+                                           <td class="txt-oflo">{{ u.roles |join(' , ') }}</td>
+                                      <td class="txt-oflo justify-content-center d-flex">
+                                        <a type="button" class="grayicon"
+                                            href="/user/{{ u.Id  }}">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        </td>
+                                        <td class="txt-oflo">
+                                            <a type="button"
+                                            class="contrydelete justify-content-center" href="#" data-valor="{{ u.Id  }}">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            
+                            </tbody>
+                        </table>
+                 </div>
+
+        </div>
+    </div>
+
+

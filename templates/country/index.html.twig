@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demo{% endblock %}
+
+{% block body %}
+<style>
+ 
+</style>
+
+<div class="body-wrapper">
+    <div id="liveAlertPlaceholder2"></div>
+
+<div> <!-- Loading Table -->
+{{ include('_partials/_table_country.html.twig') }}
+</div>
+
+<div> <!-- Loading Modal -->
+{{ include('_partials/_modal_content.html.twig') }}
+</div>
+
+</div>
+{% endblock %}

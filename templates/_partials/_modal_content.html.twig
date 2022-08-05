@@ -1,0 +1,42 @@
+<div class="modal fade bg-dark" id="new_countryModal" tabindex="-1" aria-labelledby="new_countryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="new_countryModalLabel">New Country</h5>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+         aria-label="Close">
+
+         </button>
+      </div>
+      <div class="modal-body">
+        <div class="row mb-4" id="form_search">
+        <div class="col-7">
+          {# <input type="search" class="form-control" id="txtsearch" placeholder="Enter name of country to search" /> #}
+                  <input type="hidden" required id="txtsearch" name="txtsearch" />
+                <input class="form-control" placeholder="Enter name of country to search..."
+                    id="searchcountry" name="searchcountry" required list="countrylist"
+                    autocomplete="off" />
+                <datalist id="countrylist">
+
+                </datalist>
+        
+        </div>
+          <div class="col-5"><button class="btn btn-dark mb-4" 
+          id="getFromApi"><span class="spinner spinner-border spinner-border-sm"  id="spinner"
+            role="status" aria-hidden="true"></span>
+            <span >Get From API</span>
+          </button></div>
+      
+            
+        </div>
+            <div id="liveAlertPlaceholder"></div>
+         <div class="m-4" id="form_country" >
+              {{ form(form)}}
+      </div>
+        </div>
+      <div class="modal-footer">
+       </div>
+    </div>
+  </div>
+</div>

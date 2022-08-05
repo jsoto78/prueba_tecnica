@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<style>
+   body{overflow-y: auto !important;}
+</style>
+
+<div class="body-wrapper">
+
+
+<div class="container">
+    <div class="card text-bg-dark">
+        <div class="card-header">Country &nbsp
+        <a href="/countries" class="float-end grayicon" ><i class="fas fa-step-backward"></i></a>
+
+           <a href="" id="viewmap" target="_blank"
+            data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Click here for view in map."
+
+                        data-bs-toggle="modal"
+           
+            ><i class="fas fa-globe"></i></a> 
+        </div>
+                <div class="card-body">
+        
+                        {{ form(form)}}
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
