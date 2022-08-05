@@ -13,14 +13,21 @@ class DataBaseHelper
 
 
 
-    public function save($entity,ManagerRegistry $mr,SessionInterface $session){
+    public function save($entity,ManagerRegistry $mr){
         $em = $mr->getManager();
         $em->persist($entity);
         $em->flush();
-        $session->getFlashBag()->add('success',Country::CREATED_SUCCESS);
+
     }
 
-   
+    public function delete_byId(int $id,$entity,ManagerRegistry $mr)
+    {
+        $em = $mr->getManager();
+        $country = $mr->getRepository($entity)->find($id);
+        $em->remove($country);
+        $em->flush();
+
+    }
 
 }
 

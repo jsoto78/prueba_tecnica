@@ -29,7 +29,7 @@ class CountryController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $db = new DataBaseHelper();
-            $db->save($country,$mr,$request->getSession());
+            $db->save($country,$mr);
             return $this->redirectToRoute("app_countries");
         }
         return $this->render('country/edit.html.twig', [
@@ -45,7 +45,7 @@ class CountryController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $db = new DataBaseHelper();
-            $db->save($country,$mr,$request->getSession());
+            $db->save($country,$mr);
             $session = $request->getSession();
             $session->getFlashBag()->add('success',Country::CREATED_SUCCESS);
             return $this->redirectToRoute("app_countries");

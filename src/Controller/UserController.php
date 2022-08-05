@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Service\DataBaseHelper;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,22 +26,21 @@ class UserController extends AbstractController
     #[Route('/user', name: 'app_users')]
     public function index(Request  $request,ManagerRegistry $mr): Response
     {
-        $users = $mr->getRepository(User::class)->findAll();
+        $user = $mr->getRepository(User::class)->findAll();
 
         $usr = new User();
         $form = $this->createForm(UserType::class,$usr);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $mr->getManager();
-            $em->persist($country);
-            $em->flush();
+            $usr->setPassword($this->encrypt->hashPassword($user, $form['password']->getData()));
+            $db = new DataBaseHelper();
+            $db->save($usr,$mr);
             $session = $request->getSession();
             $session->getFlashBag()->add('success',User::CREATED_SUCCESS);
             return $this->redirectToRoute("app_users");
         }
         return $this->render('user/index.html.twig', [
-            'controller_name' => 'CountriesController',
-            'users' => $users,
+            'users' => $user,
             'form' => $form->createView(),
         ]);
     }
@@ -54,9 +54,8 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword($this->encrypt->hashPassword($user, $form['password']->getData()));
-            $em = $mr->getManager();
-            $em->persist($user);
-            $em->flush();
+            $db = new DataBaseHelper();
+            $db->save($user,$mr);
             $session = $request->getSession();
             $session->getFlashBag()->add('success',User::UPDATED_SUCCESS);
             return $this->redirectToRoute("app_users");
