@@ -43,9 +43,9 @@ class ApiController extends AbstractController
     public function getAllCountry(Request  $requestr): Response
     {
         $api = new RestCountries();
-        $country = $api->getAllConutries();
+        $countries = $api->getAllConutries();
         return $this->json(
-            $country,
+            $countries,
             headers: ['Content-Type' => 'application/json;charset=UTF-8']
         );
     }
