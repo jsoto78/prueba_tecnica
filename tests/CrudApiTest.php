@@ -26,10 +26,10 @@ class CrudApiTest extends WebTestCase
           $client = static::createClient();
           $testUser = $this->getTestUser('ROLE_USER');
           $client->loginUser($testUser);
-          $response = $client->request('GET', '/api/country_by_name/spain');
+          $response = $client->request('GET', '/api/country_by_name/Suriname');
           $this->assertResponseIsSuccessful();
           $json = json_decode($client->getResponse()->getContent(), true)[0];
-          $this->assertEquals($json['name']['common'], "Spain");
+          $this->assertEquals($json['name']['common'], "Suriname");
       }
       
 }
