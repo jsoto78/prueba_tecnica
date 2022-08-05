@@ -32,7 +32,7 @@ class RestCountries
         $country=$response->body;
         if($response->code === 200){
             foreach ($country as $key => $c) {
-                if ($this->getContryFromDb($c->name->common,$mr)){
+                if ($this->getCountryFromDb($c->name->common,$mr)){
                     $res["status"] = 400;
                     return $res;
                 }
@@ -43,7 +43,7 @@ class RestCountries
 
     }
 
-    public function getContryFromDb(string $name,ManagerRegistry $mr){
+    public function getCountryFromDb(string $name,ManagerRegistry $mr){
 
         $country =  $mr->getRepository(Country::class)->findBy(['name'=>$name]);
         if(count($country)>0){

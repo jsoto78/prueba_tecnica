@@ -67,9 +67,9 @@ $(() => {
         window.location.reload()
     });
 
-    $('.contrydelete').on('click', (e) => {
+    $('.btndelete').on('click', (e) => {
        
-        const button = document.querySelector('.contrydelete');
+        const button = document.querySelector('.btndelete');
         let id = button.dataset.valor
         console.log(id)
         
