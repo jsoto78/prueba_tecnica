@@ -16,22 +16,25 @@ class ApiController extends AbstractController
 
   
 
-    #[Route('/api', name: 'app_api')]
-    public function index(): Response
-    {
-        /* Indice de la api */
-        return $this->json(
-            ['Api'=>'v1'],
-            headers: ['Content-Type' => 'application/json;charset=UTF-8']
-        );
+    // #[Route('/api', name: 'app_api')]
+    // public function index(): Response
+    // {
+    //     /* Indice de la api */
+    //     return $this->json(
+    //         ['Vesion'=>'v1',
+    //         'getCountryByName' => '/api/country_by_name/',
+    //         'getAllCountry' => '/api/get_all_country'
+    //     ],
+    //         headers: ['Content-Type' => 'application/json;charset=UTF-8']
+    //     );
 
-    }
+    // }
     #[Route('/api/country_by_name/{name}', name: 'app_api_country-name',methods: ['GET'])]
     public function getCountry(string $name,Request  $request,ManagerRegistry $mr): Response
     {
 
         $api = new RestCountries();
-        $country = $api->getConutrybyName($name,$mr);
+        $country = $api->getConutrybyName($name,$mr); // busco el pais en la api y en db.
        
         return $this->json(
             $country,
@@ -43,7 +46,7 @@ class ApiController extends AbstractController
     public function getAllCountry(Request  $requestr): Response
     {
         $api = new RestCountries();
-        $countries = $api->getAllConutries();
+        $countries = $api->getAllConutries(); // traemos todos los paises para llenar el option list
         return $this->json(
             $countries,
             headers: ['Content-Type' => 'application/json;charset=UTF-8']

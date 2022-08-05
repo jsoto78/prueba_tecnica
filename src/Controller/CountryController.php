@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Country;
 use App\Form\CountryType;
+use App\Service\DataBaseHelper;
 use Symfony\Component\Intl\Countries;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,12 +28,8 @@ class CountryController extends AbstractController
         $form = $this->createForm(CountryType::class,$country);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $em = $mr->getManager();
-            $em->persist($country);
-            $em->flush();
-            $session = $request->getSession();
-            $session->getFlashBag()->add('success',Country::CREATED_SUCCESS);
+            $db = new DataBaseHelper();
+            $db->save($country,$mr,$request->getSession());
             return $this->redirectToRoute("app_countries");
         }
         return $this->render('country/edit.html.twig', [
@@ -43,15 +40,12 @@ class CountryController extends AbstractController
     public function index(Request  $request,ManagerRegistry $mr): Response
     {
         $countries = $mr->getRepository(Country::class)->findAll();
-
         $country = new Country();
         $form = $this->createForm(CountryType::class,$country);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $em = $mr->getManager();
-            $em->persist($country);
-            $em->flush();
+            $db = new DataBaseHelper();
+            $db->save($country,$mr,$request->getSession());
             $session = $request->getSession();
             $session->getFlashBag()->add('success',Country::CREATED_SUCCESS);
             return $this->redirectToRoute("app_countries");

@@ -1,12 +1,12 @@
 <?php
-
 namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CrudApiTest extends WebTestCase
-{
-    use Helpers\TestHelpers;
+{ 
+
+   use Helpers\TestHelpers;
       /** @test */
       public function api_retrive_all_countries(): void
       {
@@ -18,7 +18,7 @@ class CrudApiTest extends WebTestCase
           $this->assertResponseIsSuccessful();
           $json = json_decode($client->getResponse()->getContent());
           $this->assertEquals(250, count($json));
-      }
+     }
       /** @test */
       public function api_retrive_one_country(): void
       {

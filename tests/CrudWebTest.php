@@ -15,11 +15,12 @@ class CrudWebTest extends WebTestCase
     {
         // comprbamos el render correcto del login
         $client = static::createClient();
-        $crawler = $client->request('GET', '/login');
+        $res = $client->request('GET', '/login');
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('button', 'Sign in');
+     
     }
-    /** @test */
+     /** @test */
     public function render_register_screen(): void
     {
         //Comprobamos el render correcto del registro
@@ -28,7 +29,7 @@ class CrudWebTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('button', 'Register');
     }
-    /** @test */
+     /** @test */
     public function render_home_screen_table(): void
     {
         //Comprobamos el render correcto del home screen y lista de paises
