@@ -5,12 +5,13 @@ Instalar
 -----
 **Clone repo**
 ```bash
-$ git clone https://github.com/jsoto78/prueba_tecnica
+git clone https://github.com/jsoto78/prueba_tecnica
 ```
 
 **ingresar a:**
 ```bash
-$ cd prueba_tecnica
+cd prueba_tecnica
+composer update
 ```
 Ejecutar docker y las migraciones:
 ```bash
@@ -27,6 +28,6 @@ password: **admin**
 Test
 -----
 ```bash
-$ cd prueba_tecnica/
-$ ./bin/phpunit
+cd prueba_tecnica/
+./bin/phpunit
 ```
