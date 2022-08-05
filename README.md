@@ -15,7 +15,7 @@ composer update
 ```
 Ejecutar docker y las migraciones:
 ```bash
-$ docker-compose up -d --build && docker exec prueba_tecnica-php-1 sh do_migrations.sh
+docker-compose up -d --build && docker exec prueba_tecnica-php-1 sh do_migrations.sh
 ```
 Uso
 -----
